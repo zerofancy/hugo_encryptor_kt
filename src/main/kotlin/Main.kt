@@ -32,6 +32,10 @@ fun main(args: Array<String>) {
 
     Security.addProvider(BouncyCastleProvider())
 
+    if (!File("public").exists()) {
+        return
+    }
+
     Files.walkFileTree(Path("public"), object : SimpleFileVisitor<Path>() {
         override fun visitFile(file: Path?, attrs: BasicFileAttributes?): FileVisitResult {
             if (file?.name?.endsWith(".html") == true) {

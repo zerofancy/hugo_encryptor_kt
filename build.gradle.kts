@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "top.ntutn"
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ application {
 tasks.register("buildRelease") {
     dependsOn(tasks.build)
     doLast {
-        val installShellFile = File(project.buildDir, "distributions/install.sh")
+        val installShellFile = File(project.buildDir, "distributions/hugow")
         installShellFile.takeIf { it.exists() }?.delete()
         installShellFile.writeText("""
             #!/usr/bin/env sh
@@ -45,6 +45,20 @@ tasks.register("buildRelease") {
               exit
             fi
             
+            encrypt_command=hugo_encryptor_kt/bin/hugo_encryptor_kt
+            if [ ! -f "${"$"}encrypt_command" ]; then
+                echo Encryptor not found, downloading...
+                
+                zipname=hugo_encryptor_kt-$version
+                curl -L -o ${"$"}zipname.zip https://github.com/zerofancy/hugo_encryptor_kt/releases/download/$version/${"$"}zipname.zip
+                unzip -a ${"$"}zipname.zip
+                rm ${"$"}zipname.zip
+                mv ${"$"}zipname hugo_encryptor_kt
+                hugo_encryptor_kt/bin/hugo_encryptor_kt install
+            fi
+
+            hugo "${'$'}@"
+            hugo_encryptor_kt/bin/hugo_encryptor_kt
         """.trimIndent())
     }
 }
