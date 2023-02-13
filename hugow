@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+if ! [ -x "$(command -v curl)" ]; then
+  echo "Please install curl to download the program"
+  exit
+fi
+
+if ! [ -x "$(command -v java)" ]; then
+  echo "Please install java to run the program"
+  exit
+fi
+
+encrypt_command=hugo_encryptor_kt/bin/hugo_encryptor_kt
+if [ ! -f "$encrypt_command" ]; then
+    echo Encryptor not found, downloading...
+    
+    zipname=hugo_encryptor_kt-1.1
+    curl -L -o $zipname.zip https://github.com/zerofancy/hugo_encryptor_kt/releases/download/1.1/$zipname.zip
+    unzip -a $zipname.zip
+    rm $zipname.zip
+    mv $zipname hugo_encryptor_kt
+    hugo_encryptor_kt/bin/hugo_encryptor_kt install
+fi
+
+hugo "$@"
+hugo_encryptor_kt/bin/hugo_encryptor_kt
