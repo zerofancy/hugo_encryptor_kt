@@ -1,4 +1,4 @@
-# baseURL = 'http://example.org/'
+baseURL = 'https://ntutn.top/hugo_encryptor_kt/'
 languageCode = 'en-us'
 title = 'Hugo Encryptor Kotlin'
 theme = 'ananke'
