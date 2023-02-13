@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Hugo Encryptor Kotlin</title>
-    <link>/posts/</link>
+    <link>https://ntutn.top/hugo_encryptor_kt/posts/</link>
     <description>Recent content in Posts on Hugo Encryptor Kotlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Feb 2023 01:44:15 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Feb 2023 01:44:15 +0800</lastBuildDate><atom:link href="https://ntutn.top/hugo_encryptor_kt/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>这是一个Hugo文章加密工具</title>
-      <link>/posts/this-is-hugo-encryptor/</link>
+      <link>https://ntutn.top/hugo_encryptor_kt/posts/this-is-hugo-encryptor/</link>
       <pubDate>Tue, 14 Feb 2023 01:44:15 +0800</pubDate>
       
-      <guid>/posts/this-is-hugo-encryptor/</guid>
+      <guid>https://ntutn.top/hugo_encryptor_kt/posts/this-is-hugo-encryptor/</guid>
       <description>&lt;p&gt;这是一个 Hugo 文章加密工具&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Here is a tools for encrypting post of hugo&lt;/p&gt;
