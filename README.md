@@ -8,7 +8,7 @@
 
 [Demo](https://ntutn.top/hugo_encryptor_kt/posts/this-is-hugo-encryptor/)
 
-## 安装使用方式
+## 安装使用方式（Linux/MacOS）
 
 前置依赖：curl、java
 
@@ -32,6 +32,27 @@ chmod +x hugow
 ```
 
 然后生成静态网页时记得使用`./hugow`命令而不是`hugo`命令，就大功告成了。
+
+## 安装使用方式（Windows）
+> 以下脚本在Windows 11 22H2测试通过。
+
+```shell
+curl -L -o hugow.bat https://github.com/zerofancy/hugo_encryptor_kt/releases/latest/download/hugow.bat
+.\hugow.bat
+```
+
+接下来写文章时，用下面的方式插入一个加密块：
+
+```markdown
+{{% hugo-encryptor "PASSWORD" %}}
+
+这里是加密段落。
+
+{{% /hugo-encryptor %}}
+```
+
+然后生成静态网页时记得使用`.\hugow.bat`命令而不是`hugo`命令，就大功告成了。
+
 
 ## 致谢
 

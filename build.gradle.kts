@@ -60,5 +60,25 @@ tasks.register("buildRelease") {
             hugo "${'$'}@"
             hugo_encryptor_kt/bin/hugo_encryptor_kt
         """.trimIndent())
+
+        val installBatFile = File(project.buildDir, "distributions/hugow.bat")
+        installBatFile.takeIf { it.exists() }?.delete()
+        installBatFile.writeText("""
+            @echo off
+            java -version || goto jne
+            if not exist hugo_encryptor_kt\bin\hugo_encryptor_kt.bat (
+                echo Downloading Program...
+                curl -L "https://github.com/zerofancy/hugo_encryptor_kt/releases/download/$version/hugo_encryptor_kt-$version.zip" -o hugo_encryptor_kt-$version.zip
+                tar -xf hugo_encryptor_kt-$version.zip
+                rename hugo_encryptor_kt-$version hugo_encryptor_kt
+                rm hugo_encryptor_kt-$version.zip
+                hugo_encryptor_kt\bin\hugo_encryptor_kt.bat install
+            )
+            hugo %*
+            hugo_encryptor_kt\bin\hugo_encryptor_kt.bat
+            exit
+            :jne
+            echo Please install java to run the program.
+        """.trimIndent())
     }
 }
