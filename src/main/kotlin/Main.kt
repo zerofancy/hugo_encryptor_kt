@@ -73,11 +73,13 @@ fun handleHtmlFile(path: Path) {
         it.html(encryptResult)
         it.removeAttr("data-password")
     }
-    document.body().append(
-        """
+    if (document.select("script.decrpytjs").isEmpty()) {
+        document.body().append(
+            """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js" />
-        <script src="/decrypt.js" />
+        <script class="decrpytjs" src="/decrypt.js" />
     """.trimIndent()
-    )
+        )
+    }
     path.writeText(document.outerHtml())
 }
